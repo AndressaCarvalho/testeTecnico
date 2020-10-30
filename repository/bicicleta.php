@@ -1,15 +1,10 @@
 <?php
-require 'include/connect.php'; 
-require 'include/functions.php';
+require 'include/conexao.php'; 
+require 'include/funcoes.php';
 
 class Bike
 {
-	public $id;
 	public $descricao;
-	public $id_cor;
-	public $id_material;
-	public $id_marca_modelo;
-	public $id_loja;
 	public $valor;
 
 	public function listar()
@@ -44,7 +39,6 @@ class Bike
 	{
 		global $conn;
 
-		$idBike = (empty($idBike)) ? $this->id : $idBike;
 		$stm = "SELECT b.id, b.descricao, c.cor, mat.material, mar.marca, model.modelo, l.nome_fantasia, b.valor FROM tb_bicicleta AS b 
 				LEFT JOIN tb_cor AS c ON b.id_cor = c.id 
 			    LEFT JOIN tb_material AS mat ON b.id_material = mat.id 
@@ -70,17 +64,11 @@ class Bike
 	}
 
 
-	public function inserir($desc = NULL, $idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL, $val = NULL)
+	public function inserir($idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL)
 	{
 		global $conn;
 
-		$desc 			= (empty($desc)) ? $this->descricao : $desc;
-		$idCor 			= (empty($idCor)) ? $this->id_cor : $idCor;
-		$idMaterial 	= (empty($idMaterial)) ? $this->id_material : $idMaterial;
-		$idMarcaModelo 	= (empty($idMarcaModelo)) ? $this->id_marca_modelo : $idMarcaModelo;
-		$idLoja 		= (empty($idLoja)) ? $this->id_loja : $idLoja;
-		$val 			= (empty($val)) ? $this->valor : $val;
-		$stm = "INSERT INTO tb_bicicleta (descricao, id_cor, id_material, id_marca_modelo, id_loja, valor) VALUES ('".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($desc)))))."', ".trim($idCor).", ".trim($idMaterial).", ".trim($idMarcaModelo).", ".trim($idLoja).", ".trim($val).")";
+		$stm = "INSERT INTO tb_bicicleta (descricao, id_cor, id_material, id_marca_modelo, id_loja, valor) VALUES ('".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($this->descricao)))))."', ".trim($idCor).", ".trim($idMaterial).", ".trim($idMarcaModelo).", ".trim($idLoja).", ".trim($this->valor).")";
 		$stm = $conn->prepare($stm);
 		$ret = $stm->execute();
 
@@ -96,26 +84,19 @@ class Bike
 	}
 
 
-	public function atualizar($idBike = NULL, $desc = NULL, $idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL, $val = NULL)
+	public function atualizar($idBike = NULL, $idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL)
 	{
 		global $conn;
 
-		$idBike 		= (empty($idBike)) ? $this->id : $idBike;
-		$desc 			= (empty($desc)) ? $this->descricao : $desc;
-		$idCor 			= (empty($idCor)) ? $this->id_cor : $idCor;
-		$idMaterial 	= (empty($idMaterial)) ? $this->id_material : $idMaterial;
-		$idMarcaModelo 	= (empty($idMarcaModelo)) ? $this->id_marca_modelo : $idMarcaModelo;
-		$idLoja 		= (empty($idLoja)) ? $this->id_loja : $idLoja;
-		$val 			= (empty($val)) ? $this->valor : $val;
-
 		$stm = "UPDATE tb_bicicleta SET ";
-		$desc 			= (!empty($desc)) ? $stm .= " descricao = '".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($desc)))))."' " : "";
-		$idCor 			= (!empty($idCor)) ? $stm .= " id_cor = ".trim($idCor)." " : "";
-		$idMaterial 	= (!empty($idMaterial)) ? $stm .= " id_material = ".trim($idMaterial)." " : "";
-		$idMarcaModelo 	= (!empty($idMarcaModelo)) ? $stm .= " id_marca_modelo = ".trim($idMarcaModelo)." " : "";
-		$idLoja 		= (!empty($idLoja)) ? $stm .= " id_loja = ".trim($idLoja)." " : "";
-		$val 			= (!empty($val)) ? $stm .= " valor = ".trim($val)." " : "";
+		$stm .= (!empty($this->descricao)) ? " descricao = '".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($this->descricao)))))."', " : "";
+		$stm .= (!empty($idCor)) ? " id_cor = ".trim($idCor).", " : "";
+		$stm .= (!empty($idMaterial)) ? " id_material = ".trim($idMaterial).", " : "";
+		$stm .= (!empty($idMarcaModelo)) ? " id_marca_modelo = ".trim($idMarcaModelo).", " : "";
+		$stm .= (!empty($idLoja)) ? " id_loja = ".trim($idLoja).", " : "";
+		$stm .= (!empty($this->valor)) ? " valor = ".trim($this->valor)." " : "";
 		$stm .= " WHERE id = ".trim($idBike);
+		$stm = str_replace(", WHERE", " WHERE", $stm);
 
 		$stm = $conn->prepare($stm);
 		$ret = $stm->execute();
@@ -132,18 +113,11 @@ class Bike
 	}
 
 
-	public function atualizarTudo($idBike = NULL, $desc = NULL, $idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL, $val = NULL)
+	public function atualizarTudo($idBike = NULL, $idCor = NULL, $idMaterial = NULL, $idMarcaModelo = NULL, $idLoja = NULL)
 	{
 		global $conn;
 
-		$idBike 		= (empty($idBike)) ? $this->id : $idBike;
-		$desc 			= (empty($desc)) ? $this->descricao : $desc;
-		$idCor 			= (empty($idCor)) ? $this->id_cor : $idCor;
-		$idMaterial 	= (empty($idMaterial)) ? $this->id_material : $idMaterial;
-		$idMarcaModelo 	= (empty($idMarcaModelo)) ? $this->id_marca_modelo : $idMarcaModelo;
-		$idLoja 		= (empty($idLoja)) ? $this->id_loja : $idLoja;
-		$val 			= (empty($val)) ? $this->valor : $val;
-		$stm = "UPDATE tb_bicicleta SET descricao = '".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($desc)))))."', id_cor = ".trim($idCor).", id_material = ".trim($idMaterial).", id_marca_modelo = ".trim($idMarcaModelo).", id_loja = ".trim($idLoja).", valor = ".trim($val)." WHERE id = ".trim($idBike);
+		$stm = "UPDATE tb_bicicleta SET descricao = '".utf8_decode(addslashes(strtoupper(tirarAcentos(trim($this->descricao)))))."', id_cor = ".trim($idCor).", id_material = ".trim($idMaterial).", id_marca_modelo = ".trim($idMarcaModelo).", id_loja = ".trim($idLoja).", valor = ".trim($this->valor)." WHERE id = ".trim($idBike);
 		$stm = $conn->prepare($stm);
 		$ret = $stm->execute();
 

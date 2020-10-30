@@ -29,7 +29,6 @@ class Rest
 				if (method_exists($classe, $metodo)) {
 					$produto = new $classe;
 
-					$produto->id 				= (isset($dataBody->id)) ? $dataBody->id : NULL;
 					$produto->descricao 		= (isset($dataBody->descricao)) ? $dataBody->descricao : NULL;
 					$produto->id_cor 			= (isset($dataBody->id_cor)) ? $dataBody->id_cor : NULL;
 					$produto->id_material 		= (isset($dataBody->id_material)) ? $dataBody->id_material : NULL;
