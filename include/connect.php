@@ -1,4 +1,4 @@
-<?php 
+<?php  
 try
 {
 	$conn = new PDO('mysql: host=locahost; dbname=teste_tecnico;', 'root', '');

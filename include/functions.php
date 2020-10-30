@@ -1,4 +1,4 @@
-<?php
+<?php 
 function tirarAcentos($string) 
 {
 	$acentos = array("/(á|à|ã|â|ä)/",

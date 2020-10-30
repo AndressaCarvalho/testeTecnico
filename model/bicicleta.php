@@ -1,5 +1,5 @@
 <?php
-require 'include/connect.php';
+require 'include/connect.php'; 
 require 'include/functions.php';
 
 class Bike
