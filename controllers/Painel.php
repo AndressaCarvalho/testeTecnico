@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json; charset=utf-8'); 
 
-require 'model/bicicleta.php';
+require 'repository/bicicleta.php';
 
 class Rest
 {
@@ -29,12 +29,8 @@ class Rest
 				if (method_exists($classe, $metodo)) {
 					$produto = new $classe;
 
-					$produto->descricao 		= (isset($dataBody->descricao)) ? $dataBody->descricao : NULL;
-					$produto->id_cor 			= (isset($dataBody->id_cor)) ? $dataBody->id_cor : NULL;
-					$produto->id_material 		= (isset($dataBody->id_material)) ? $dataBody->id_material : NULL;
-					$produto->id_marca_modelo 	= (isset($dataBody->id_marca_modelo)) ? $dataBody->id_marca_modelo : NULL;
-					$produto->id_loja 			= (isset($dataBody->id_loja)) ? $dataBody->id_loja : NULL;
-					$produto->valor 			= (isset($dataBody->valor)) ? $dataBody->valor : NULL;
+					$produto->descricao = (isset($dataBody->descricao)) ? $dataBody->descricao : NULL;
+					$produto->valor 	= (isset($dataBody->valor)) ? $dataBody->valor : NULL;
 
 					$retorno = call_user_func_array(array($produto, $metodo), $parametros);
 
