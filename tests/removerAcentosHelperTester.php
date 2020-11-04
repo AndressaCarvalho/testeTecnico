@@ -1,4 +1,6 @@
 <?php 
+require 'helpers/removerAcentosHelper.php';
+
 class RemoverAcentosTester
 {
 	public static function removerAcentuacaoTester() 

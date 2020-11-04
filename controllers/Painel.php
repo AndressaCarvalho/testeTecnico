@@ -2,7 +2,6 @@
 header('Content-Type: application/json; charset=utf-8'); 
 
 require 'repository/bicicleta.php';
-require 'tests/removerAcentosHelperTester.php';
 
 class Rest
 {
