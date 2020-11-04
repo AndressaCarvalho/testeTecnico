@@ -1,6 +1,4 @@
 <?php 
-require 'helpers/removerAcentosHelper.php';
-
 class RemoverAcentosTester
 {
 	public static function removerAcentuacaoTester() 
@@ -12,7 +10,7 @@ class RemoverAcentosTester
 		$retorno = $rAcentuacao->removerAcentuacao($testeCAcento);
 
 		if ($retorno === $testeSAcento) {
-			$resultado = array('mensagem' => 'Sucesso!');
+			$resultado = array('mensagem' => 'Sucesso!', 'retorno' => $retorno);
 		} else {
 			$resultado = array('mensagem' => 'Falha!');
 		}
