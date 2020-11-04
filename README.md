@@ -1,5 +1,5 @@
 # API PHP para Gerenciamento e Administração de Bicicletas
-Esta API, desenvolvida na linguagem de programação PHP, tem por objetivo fornecer endpoints (operações CRUD) para gerenciar e administrar informações referentes à bicicletas em geral (descrição e valor). O banco de dados utilizado é o MySQL, e a estrutura organizacional segue o modelo MVC, que separa a lógica e a apresentação de maneira consistente e dinâmica, facilitando a manutenção do projeto.
+Esta API, desenvolvida em PHP, tem por objetivo fornecer endpoints para gerenciar informações referentes à bicicletas. O banco de dados utilizado é o MySQL, e a estrutura organizacional segue o modelo MVC, que separa a lógica e a apresentação de maneira consistente e dinâmica, facilitando a manutenção do projeto.
 
 
 
