@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Nov-2020 às 06:00
+-- Tempo de geração: 04-Nov-2020 às 05:15
 -- Versão do servidor: 10.4.8-MariaDB
 -- versão do PHP: 7.2.23
 
@@ -63,7 +63,7 @@ ALTER TABLE `tb_bicicleta`
 -- AUTO_INCREMENT de tabela `tb_bicicleta`
 --
 ALTER TABLE `tb_bicicleta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
