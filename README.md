@@ -44,11 +44,6 @@ Observação: No diretório "db" existe uma arquivo JSON que pode ser usado para
 
 
 
-# Implementações Futuras
-Para que a referida API PHP possa ser implementada em um ambiente produtivo, é necessário que o banco de dados se torne mais robusto, contendo outras informações pertinentes ao produto "bicicleta". Além disso, investir em mais testes automatizados traria mais facilidade, eficiência e agilidade para que as funcionalidades do sistema sejam avaliadas.
-
-
-
 # Referências
 API REST com PHP: https://youtu.be/pa6QwLWG12Q
 
