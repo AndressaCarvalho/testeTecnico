@@ -4,10 +4,10 @@ Esta API, desenvolvida em PHP, tem por objetivo fornecer endpoints para gerencia
 
 
 # Execução
-Para que o código fosse executado, e assim, testado adequadamente, foram utilizados o servidor HTTP Apache, e a ferramenta para teste de serviços RESTful Postman.
+Para que o código fosse executado, e assim testado adequadamente, foram utilizados o servidor HTTP Apache, e a ferramenta para teste de serviços RESTful Postman.
 
 
-Com o objetivo de fazer com que banco de dados "db_teste_tecnico" seja criado rapidamente, o diretório "db" possui um arquivo SQL com os registros e as estruturas de tabelas. Assim, serão geradas informações fictícias na "tb_bicicleta".
+Com o objetivo de fazer com que banco de dados "db_teste_tecnico" seja rapidamente criado, o diretório "db" possui um arquivo SQL com os registros e as estruturas de tabelas. Assim, serão geradas informações fictícias na "tb_bicicleta".
 
 
 Com as ferramentas e o banco devidamente configurados, é possível então realizar operações HTTP. As rotas definidas para a API são:
